@@ -7,7 +7,7 @@ namespace Time_and_Sound
 {
     public class Game1 : Game
     {
-       private SoundEffect explode;
+       SoundEffect explode;
         
         
         Texture2D bombTexture;
@@ -48,14 +48,7 @@ namespace Time_and_Sound
 
         protected override void Update(GameTime gameTime)
         {
-            if (mouseState.LeftButton == ButtonState.Pressed)
-                seconds = 0f;
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-            seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (seconds > 10)
-                seconds = 0f;
+           
             // TODO: Add your update logic here
 
             if (seconds >= 10)
@@ -64,6 +57,14 @@ namespace Time_and_Sound
                 seconds = 0f;
             }
 
+ if (mouseState.LeftButton == ButtonState.Pressed)
+                seconds = 0f;
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+            seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (seconds > 10)
+                seconds = 0f;
 
             base.Update(gameTime);
         }
